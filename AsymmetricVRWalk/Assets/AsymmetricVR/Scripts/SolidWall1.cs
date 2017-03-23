@@ -7,44 +7,47 @@ public class SolidWall1 : MonoBehaviour {
 
 	private bool crossedWall;
 	private bool inWall;
-	GameObject cor;
+	private bool checkCrossBack;
+	private GameObject currentCorridor;
 
-	GameObject hmd_user;
-
-	BoxCollider[] colls;
-
-
-	// Use this for initialization
 	void Start () {
 		crossedWall = false;
-		cor = GameObject.Find ("Cell1/col1");
-
-		hmd_user = GameObject.FindGameObjectWithTag ("Player");
+		inWall = false;
+		checkCrossBack = false;
+		currentCorridor = GameObject.Find ("Cell1/col1");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (crossedWall == true) {
 
+	void Update(){
+		if (checkCrossBack == true) {
+			BoxCollider[] corridorColliders = currentCorridor.GetComponents<BoxCollider> ();
+			for (int c = 0; c < corridorColliders.Length; c++) {
+				if(corridorColliders[c].bounds.Contains(transform.TransformPoint(GetComponent<BoxCollider>().center))){
+					Transform cell = GetComponent<HMD_user>().currentCell.transform;
+					foreach (Transform child in cell) {
+						if (child != cell) {
+							child.gameObject.SetActive (true);
+						}
+					}
+					crossedWall = false;
+					inWall = false;
+					checkCrossBack = false;
+					break;
+				}
+			}
 		}
 	}
 
 	void OnTriggerExit(Collider collider){
-		if (collider.tag == "CorridorBox" && inWall == true && crossedWall == false && collider.gameObject == cor) {
-			
-			Debug.Log ("out");
+		if (collider.tag == "CorridorBox" && inWall == true && crossedWall == false && collider.gameObject == currentCorridor) {
 
-			GameObject corridor = collider.gameObject;
-			//cor = corridor;
-			BoxCollider[] corridorColliders = corridor.GetComponents<BoxCollider> ();
-			Debug.Log (corridorColliders.Length);
-			Collider[] col = null;
+			BoxCollider[] corridorColliders = currentCorridor.GetComponents<BoxCollider> ();
+
+			Collider[] col = null; //corridor colliders to render
 
 			for (int c = 0; c < corridorColliders.Length; c++) {
 				Collider[] overlappedColls = 
-					Physics.OverlapBox (corridor.transform.TransformPoint(corridorColliders [c].center), 
+					Physics.OverlapBox (currentCorridor.transform.TransformPoint(corridorColliders [c].center), 
 						corridorColliders [c].size/2f);
-				Debug.Log (overlappedColls.Length);
 				if (col == null) {
 					col = new Collider[overlappedColls.Length];
 					int i = 0;
@@ -61,8 +64,8 @@ public class SolidWall1 : MonoBehaviour {
 						col [i++] = obj;
 				}
 			}
-			//Collider[] overlappedColls = Physics.OverlapBox (corridor.transform.TransformPoint(corridorColliders [0].center), corridorColliders [0].size/2f);
-			Transform cell = hmd_user.GetComponent<HMD_user>().currentCell.transform;
+
+			Transform cell = GetComponent<HMD_user>().currentCell.transform;
 			foreach (Transform child in cell)
 			{
 				if (child != cell){
@@ -73,14 +76,18 @@ public class SolidWall1 : MonoBehaviour {
 				col [c].gameObject.SetActive (true);
 			}
 
-			colls = new BoxCollider[corridorColliders.Length];
-			colls = corridorColliders;
-			Debug.Log (colls);
 			crossedWall = true;
+			checkCrossBack = false;
 		}
 
 		if (collider.tag == "Wall") {
-			inWall = false;
+			//check whether player is back in corridor or more out
+			BoxCollider[] corridorColliders = currentCorridor.GetComponents<BoxCollider> ();
+			for (int c = 0; c < corridorColliders.Length; c++) {
+				if(corridorColliders[c].bounds.Contains(transform.position)){
+					inWall = false;
+				}
+			}
 		}
 	}
 
@@ -90,30 +97,11 @@ public class SolidWall1 : MonoBehaviour {
 		}
 
 		if (collider.tag == "CorridorBox"){
-			if (crossedWall == true && collider.gameObject == cor) {
-			
-				Debug.Log ("back");
-
-				Transform cell = hmd_user.GetComponent<HMD_user>().currentCell.transform;
-				foreach (Transform child in cell) {
-					if (child != cell) {
-						child.gameObject.SetActive (true);
-					}
-				}
-
-				crossedWall = false;
+			if (crossedWall == true && collider.gameObject == currentCorridor) {
+				checkCrossBack = true;
 			} else if (crossedWall == false && inWall == false) {
-				cor = collider.gameObject;
+				currentCorridor = collider.gameObject;
 			}
 		}
 	}
-
-	/*void OnDrawGizmos() {
-		if (crossingWall == true) {
-			foreach (BoxCollider c in colls) {
-				Gizmos.color = new Color (1, 0, 0, 1);
-				Gizmos.DrawCube (cor.transform.TransformPoint (c.center), c.size);
-			}
-		}
-	}*/
 }
