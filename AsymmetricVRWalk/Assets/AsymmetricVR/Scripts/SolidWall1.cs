@@ -9,13 +9,17 @@ public class SolidWall1 : MonoBehaviour {
 	private bool inWall;
 	GameObject cor;
 
+	GameObject hmd_user;
+
 	BoxCollider[] colls;
 
 
 	// Use this for initialization
 	void Start () {
 		crossedWall = false;
-		cor = GameObject.Find ("col1");
+		cor = GameObject.Find ("Cell1/col1");
+
+		hmd_user = GameObject.FindGameObjectWithTag ("Player");
 	}
 	
 	// Update is called once per frame
@@ -58,7 +62,7 @@ public class SolidWall1 : MonoBehaviour {
 				}
 			}
 			//Collider[] overlappedColls = Physics.OverlapBox (corridor.transform.TransformPoint(corridorColliders [0].center), corridorColliders [0].size/2f);
-			Transform cell = GameObject.Find ("Cell1").transform;
+			Transform cell = hmd_user.GetComponent<HMD_user>().currentCell.transform;
 			foreach (Transform child in cell)
 			{
 				if (child != cell){
@@ -90,7 +94,7 @@ public class SolidWall1 : MonoBehaviour {
 			
 				Debug.Log ("back");
 
-				Transform cell = GameObject.Find ("Cell1").transform;
+				Transform cell = hmd_user.GetComponent<HMD_user>().currentCell.transform;
 				foreach (Transform child in cell) {
 					if (child != cell) {
 						child.gameObject.SetActive (true);

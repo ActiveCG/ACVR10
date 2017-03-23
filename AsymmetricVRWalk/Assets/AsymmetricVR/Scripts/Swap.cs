@@ -11,6 +11,8 @@ public class Swap : MonoBehaviour {
 		if (collider.tag == "Player") {
 			showPart.SetActive (true);
 			hidePart.SetActive (false);
+
+			collider.gameObject.GetComponent<HMD_user> ().currentCell = showPart;
 		}
 	}
 }
