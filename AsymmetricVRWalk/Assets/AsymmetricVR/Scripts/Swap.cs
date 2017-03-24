@@ -8,7 +8,7 @@ public class Swap : MonoBehaviour {
 	public GameObject showPart;
 
 	void OnTriggerEnter(Collider collider){
-		if (collider.tag == "Player") {
+		if (collider.gameObject.GetComponent<HMD_user> ()/*collider.tag == "Player"*/) {
 			showPart.SetActive (true);
 			hidePart.SetActive (false);
 
