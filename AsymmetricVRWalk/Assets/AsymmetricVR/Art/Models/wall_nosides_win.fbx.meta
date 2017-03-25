@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2e5d1233cd168494bb504763e302352c
-timeCreated: 1490459722
+guid: b3f2399af5e1eee4c838eb3e19e4a52c
+timeCreated: 1490466482
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: wall_nosides_1
-    4300002: wall_nosides_1.001
+    4300000: wall_sides_win_1
   materials:
     importMaterials: 1
     materialName: 0
