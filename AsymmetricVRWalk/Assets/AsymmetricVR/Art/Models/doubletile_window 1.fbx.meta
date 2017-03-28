@@ -10,6 +10,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: wall_nosides_1.001
+    4300002: double_window_cor
   materials:
     importMaterials: 1
     materialName: 0
