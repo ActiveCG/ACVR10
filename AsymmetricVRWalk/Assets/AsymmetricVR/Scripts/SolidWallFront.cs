@@ -7,16 +7,15 @@ public class SolidWallFront : SolidWall {
 	public SolidWallSide leftCollider;
 	public SolidWallSide rightCollider;
 
-	public GameObject grid;
-
 	void Start () {
 		crossedWall = false;
 		inWall = false;
 		checkCrossBack = false;
 		wallsEntered = new List<BoxCollider> ();
-		currentCorridor = GameObject.Find ("Cell1/col1");
+		currentCorridor = GameObject.Find ("Cell1/triggers/corridor1");
 		leftCollider.currentCorridor = currentCorridor;
 		rightCollider.currentCorridor = currentCorridor;
+		grid = GameObject.FindGameObjectWithTag ("Grid");
 		leftCollider.grid = grid;
 		rightCollider.grid = grid;
 
@@ -91,6 +90,8 @@ public class SolidWall: MonoBehaviour{
 	public bool crossedWall, inWall, checkCrossBack;
 	[HideInInspector]
 	public GameObject currentCorridor;
+	[HideInInspector]
+	public GameObject grid;
 	protected List<BoxCollider> wallsEntered;
 
 	protected bool IsInCorridor(Vector3 colliderCenter){
@@ -154,7 +155,7 @@ public class SolidWall: MonoBehaviour{
 
 	protected void ShowCell(Transform cell){
 		foreach (Transform child in cell) {
-			if (child != cell) {
+			if (child != cell && child != currentCorridor.transform) {//********
 				child.gameObject.SetActive (true);
 			}
 		}

@@ -6,9 +6,6 @@ public class SolidWallSide : SolidWall {
 
 	private GameObject hmd_user;
 
-	[HideInInspector]
-	public GameObject grid;
-
 	void Start () {
 		crossedWall = false;
 		inWall = false;

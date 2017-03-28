@@ -10,6 +10,7 @@ TagManager:
   - projectile
   - lerpTrig
   - Mimic
+  - Grid
   layers:
   - Default
   - TransparentFX
