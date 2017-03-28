@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7f54e9dce1752f648bcbb02b5d795b55
-timeCreated: 1490651187
+guid: a5536ca3e65cda04cbd5718c44afb53a
+timeCreated: 1490704470
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: wall_nosides_1.001
-    4300002: double_window_cor
+    4300000: Sphere.001
   materials:
     importMaterials: 1
     materialName: 0
