@@ -6,13 +6,16 @@ public class LerpOnly : MonoBehaviour
 {
     private GameObject player;
 
+    private bool runOnce = false;
+
     [HideInInspector]
     public Vector3 offset;
 
     private float speed;
     private float startTime;
     private bool playerFollow = true;
-    
+    private bool setupOnce = false;
+
     void Start()
     {
         speed = 1f;
@@ -23,12 +26,12 @@ public class LerpOnly : MonoBehaviour
 
     void Update()
     {
-            transform.position = LerpTrue(transform.position, player.transform.position + offset, speed);
+            transform.position = LerpTrue(transform.position, player.transform.position + offset, speed);       
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.tag == "lerpTrig")
+        if (col.tag == "lerpTrig")
         {
             offset += transform.position - (player.transform.position + offset - new Vector3(col.GetComponent<MultiSpeed>().transitionLengthX, col.GetComponent<MultiSpeed>().transitionLengthY, col.GetComponent<MultiSpeed>().transitionLengthZ));
             playerFollow = false;
