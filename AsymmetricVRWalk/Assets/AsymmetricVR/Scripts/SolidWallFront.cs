@@ -12,7 +12,7 @@ public class SolidWallFront : SolidWall {
 		inWall = false;
 		checkCrossBack = false;
 		wallsEntered = new List<BoxCollider> ();
-		currentCorridor = GameObject.Find ("Cell1/triggers/corridor1");
+		currentCorridor = GameObject.Find ("Cell1/corridor1");
 		leftCollider.currentCorridor = currentCorridor;
 		rightCollider.currentCorridor = currentCorridor;
 		grid = GameObject.FindGameObjectWithTag ("Grid");
