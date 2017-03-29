@@ -12,6 +12,7 @@ ModelImporter:
     4300000: wall_sides_1
     4300002: wall_sides_win_1
     4300004: deco_full_3.000
+    4300006: single_window_new
   materials:
     importMaterials: 1
     materialName: 0

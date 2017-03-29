@@ -12,6 +12,7 @@ ModelImporter:
     4300000: wall_nosides_1
     4300002: wall_nosides_1.001
     4300004: double_window_cor
+    4300006: double_window_new
   materials:
     importMaterials: 1
     materialName: 0
