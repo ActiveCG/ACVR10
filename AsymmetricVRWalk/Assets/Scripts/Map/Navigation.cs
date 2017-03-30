@@ -22,7 +22,7 @@ public class Navigation : MonoBehaviour
         offset = transform.position - target.transform.position;
     }
 
-    void Update()
+    void LateUpdate()
     {
         nav.SetDestination(target.transform.position + offset);
         transform.rotation = target.transform.rotation;

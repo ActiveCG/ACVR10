@@ -34,6 +34,7 @@ public class navTrigger : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Mimic")

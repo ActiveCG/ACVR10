@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class calibrationTrigger : MonoBehaviour
 {
-    [HideInInspector]
-    public static bool startMap = false;
 
     private float timer;
     private bool startTimer;
@@ -29,9 +27,11 @@ public class calibrationTrigger : MonoBehaviour
                 startingCell.SetActive(true);
                 map.SetActive(true);
                 SteamVR_Fade.Start(Color.clear, 1);
-                startMap = true;
                 timer = 0;
                 startTimer = false;
+                 //transform.position - GameObject.FindGameObjectWithTag("Player").transform.position;
+                GameObject mimic = GameObject.FindGameObjectWithTag("Mimic");
+                mimic.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position + map.transform.position;
             }
         }
     }
