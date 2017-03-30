@@ -17,6 +17,7 @@ public class Navigation : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player");
         nav = GetComponent<NavMeshAgent>();
+        nav.updateRotation = false;
 
         offset = transform.position - target.transform.position;
     }
@@ -24,6 +25,7 @@ public class Navigation : MonoBehaviour
     void Update()
     {
         nav.SetDestination(target.transform.position + offset);
+        transform.rotation = target.transform.rotation;
     }
 
     public void UpdateOffset(float x, float y, float z)
