@@ -7,20 +7,23 @@ public class SolidWallFront : SolidWall {
 	public SolidWallSide leftCollider;
 	public SolidWallSide rightCollider;
 
-	public GameObject grid;
-
 	void Start () {
 		crossedWall = false;
 		inWall = false;
 		checkCrossBack = false;
 		wallsEntered = new List<BoxCollider> ();
-		currentCorridor = GameObject.Find ("Cell1/col1");
+		currentCorridor = GameObject.Find ("Cell1/corridor1");
 		leftCollider.currentCorridor = currentCorridor;
 		rightCollider.currentCorridor = currentCorridor;
-		leftCollider.grid = grid;
-		rightCollider.grid = grid;
+		//grid = GameObject.FindGameObjectWithTag ("Grid");
+		//leftCollider.grid = grid;
+		//rightCollider.grid = grid;
 
-		ShowGrid (grid, false);
+		//ShowGrid (grid, false);
+
+		panoramas = GameObject.FindGameObjectsWithTag ("Panorama");
+		leftCollider.panoramas = panoramas;
+		rightCollider.panoramas = panoramas;
 	}
 
 
@@ -28,7 +31,7 @@ public class SolidWallFront : SolidWall {
 		if (checkCrossBack == true) {
 			if (IsInCorridor (transform.TransformPoint (GetComponent<BoxCollider> ().center)) == true) {
 				ShowCell (GetComponent<HMD_user>().currentCell.transform);
-				ShowGrid (grid, false);
+				//ShowGrid (grid, false);
 
 				crossedWall = false;
 				//inWall = false;
@@ -70,7 +73,7 @@ public class SolidWallFront : SolidWall {
 		if (collider.tag == "CorridorBox" && inWall == true
 			&& crossedWall == false && collider.gameObject == currentCorridor) {
 			ShowOnlyOneCorridor (GetComponent<HMD_user>().currentCell.transform);
-			ShowGrid (grid, true);
+			//ShowGrid (grid, true);
 
 			crossedWall = true;
 			checkCrossBack = false;
@@ -91,6 +94,9 @@ public class SolidWall: MonoBehaviour{
 	public bool crossedWall, inWall, checkCrossBack;
 	[HideInInspector]
 	public GameObject currentCorridor;
+	[HideInInspector]
+	//public GameObject grid;
+	public GameObject[] panoramas;
 	protected List<BoxCollider> wallsEntered;
 
 	protected bool IsInCorridor(Vector3 colliderCenter){
@@ -150,17 +156,27 @@ public class SolidWall: MonoBehaviour{
 		for (int c = 0; c < keepColliders.Length; c++) {
 			keepColliders [c].gameObject.SetActive (true);
 		}
-	}
-
-	protected void ShowCell(Transform cell){
-		foreach (Transform child in cell) {
-			if (child != cell) {
-				child.gameObject.SetActive (true);
+		if (panoramas != null) {
+			foreach (GameObject p in panoramas) {
+				p.SetActive (false);
 			}
 		}
 	}
 
-	protected void ShowGrid(GameObject grid, bool show){
-		grid.SetActive (show);
+	protected void ShowCell(Transform cell){
+		foreach (Transform child in cell) {
+			if (child != cell && child != currentCorridor.transform) {//********
+				child.gameObject.SetActive (true);
+			}
+		}
+		if (panoramas != null) {
+			foreach (GameObject p in panoramas) {
+				p.SetActive (true);
+			}
+		}
 	}
+
+	/*protected void ShowGrid(GameObject grid, bool show){
+		grid.SetActive (show);
+	}*/
 }

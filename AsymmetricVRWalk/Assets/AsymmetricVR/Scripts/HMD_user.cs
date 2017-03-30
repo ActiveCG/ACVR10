@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class HMD_user : MonoBehaviour {
 
-	[HideInInspector]
+	//[HideInInspector]
 	public GameObject currentCell;
 
 	void Start(){
-		currentCell = GameObject.Find ("Cell1");
+		//currentCell = GameObject.Find ("Cell1");
 	}
 }

@@ -6,9 +6,6 @@ public class SolidWallSide : SolidWall {
 
 	private GameObject hmd_user;
 
-	[HideInInspector]
-	public GameObject grid;
-
 	void Start () {
 		crossedWall = false;
 		inWall = false;
@@ -22,7 +19,7 @@ public class SolidWallSide : SolidWall {
 		if (checkCrossBack == true) {
 			if (IsInCorridor (transform.TransformPoint (GetComponent<BoxCollider> ().center)) == true) {
 				ShowCell (hmd_user.GetComponent<HMD_user>().currentCell.transform);
-				ShowGrid (grid, false);
+				//ShowGrid (grid, false);
 
 				crossedWall = false;
 				//inWall = false;
@@ -58,7 +55,7 @@ public class SolidWallSide : SolidWall {
 		if (collider.tag == "CorridorBox" && inWall == true
 			&& crossedWall == false && collider.gameObject == currentCorridor) {
 			ShowOnlyOneCorridor (hmd_user.GetComponent<HMD_user>().currentCell.transform);
-			ShowGrid (grid, true);
+			//ShowGrid (grid, true);
 
 			crossedWall = true;
 			checkCrossBack = false;

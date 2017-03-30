@@ -133,6 +133,7 @@ ModelImporter:
     4300042: window
     4300044: window_glassR
     4300046: wall_windowR
+    4300048: floor_new
   materials:
     importMaterials: 1
     materialName: 0
