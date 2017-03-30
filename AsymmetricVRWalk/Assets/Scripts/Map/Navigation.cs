@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Navigation : MonoBehaviour
 {
+    public float tileSize = 0.625f;
 
     private GameObject target;
     private NavMeshAgent nav;
@@ -27,6 +28,6 @@ public class Navigation : MonoBehaviour
 
     public void UpdateOffset(float x, float y, float z)
     {
-        offset += transform.position - ((target.transform.position + offset) + new Vector3(x * 0.635f, y * 0.635f, z * 0.635f));
+        offset += transform.position - ((target.transform.position + offset) + new Vector3(x * tileSize, y * tileSize, z * tileSize));
     }
 }
