@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class navTrigger : MonoBehaviour {
-
+public class navTrigger : MonoBehaviour
+{
     public float x;
     public float y;
     public float z;
@@ -12,7 +12,7 @@ public class navTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Mimic")
+        if (other.tag == "Mimic")
         {
             if (yee_ol_switcheroo == false)
             {
