@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class calibrationTrigger : MonoBehaviour
 {
-    [HideInInspector]
-    public static bool startMap = false;
-
     private float timer;
     private bool startTimer;
 
@@ -17,7 +14,10 @@ public class calibrationTrigger : MonoBehaviour
 
     public float waitTime;
 
-    // Use this for initialization
+	void Start(){
+		map.SetActive (false);
+	}
+
     void Update()
     {
         if (startTimer == true)
@@ -29,14 +29,12 @@ public class calibrationTrigger : MonoBehaviour
                 startingCell.SetActive(true);
                 map.SetActive(true);
                 SteamVR_Fade.Start(Color.clear, 1);
-                startMap = true;
                 timer = 0;
                 startTimer = false;
             }
         }
     }
 
-    // Update is called once per frame
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Player")
