@@ -12,6 +12,7 @@ TagManager:
   - Mimic
   - Grid
   - Panorama
+  - TunnelEntrance
   layers:
   - Default
   - TransparentFX
