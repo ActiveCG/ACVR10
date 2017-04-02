@@ -91,7 +91,7 @@ public class MimicFollower : MonoBehaviour {
 				tileEnd = currentProlong.tileEnd;
 				prolongStart = currentProlong.prolongationStart;
 				prolongEnd = currentProlong.prolongationEnd;
-				print ("in");
+//				print ("in");
 			}
 		}
 	}
@@ -105,7 +105,7 @@ public class MimicFollower : MonoBehaviour {
 				tileEnd = currentProlong.tileEnd;
 				prolongStart = currentProlong.prolongationStart;
 				prolongEnd = currentProlong.prolongationEnd;
-				print ("in");
+//				print ("in");
 			}
 		}
 	}
@@ -118,7 +118,7 @@ public class MimicFollower : MonoBehaviour {
 			if (currentProlong.prolongedX > 0) {
 				float p = (hmd.position.x - tileStart) / (tileEnd - tileStart);
 				p = Mathf.Clamp01 (p);
-				print ("exit " + p);
+//				print ("exit " + p);
 				float x_offset = 1f * (prolongEnd - prolongStart) * currentProlong.prolongedX / (currentProlong.prolongedX + 1f);
 				if (p == 0f && currentProlong.addedToOffset == true) {
 					prolongOffset = new Vector3 (prolongOffset.x - x_offset, prolongOffset.y, prolongOffset.z);
@@ -131,7 +131,7 @@ public class MimicFollower : MonoBehaviour {
 			else if (currentProlong.prolongedZ > 0) {
 				float p = (hmd.position.z - tileStart) / (tileEnd - tileStart);
 				p = Mathf.Clamp01 (p);
-				print ("exit " + p);
+//				print ("exit " + p);
 				float z_offset = 1f * (prolongEnd - prolongStart) * currentProlong.prolongedZ / (currentProlong.prolongedZ + 1f);
 				if (p == 0f && currentProlong.addedToOffset == true) {
 					prolongOffset = new Vector3 (prolongOffset.x, prolongOffset.y, prolongOffset.z - z_offset);

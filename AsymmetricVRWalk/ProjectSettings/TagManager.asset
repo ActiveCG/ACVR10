@@ -13,6 +13,8 @@ TagManager:
   - Grid
   - Panorama
   - TunnelEntrance
+  - OutOfBounds
+  - OverlapCollider
   layers:
   - Default
   - TransparentFX
