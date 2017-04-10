@@ -19,8 +19,8 @@ public class SolidWallSide : SolidWall {
 		if (checkCrossBack == true) {
 			if (IsInCorridor (transform.TransformPoint (GetComponent<BoxCollider> ().center)) == true) {
 				ShowCell (hmd_user.GetComponent<HMD_user>().currentCell.transform);
-				//ShowGrid (grid, false);
-
+				hmd_user.GetComponent<SolidWallFront>().ShowOutOfBoundsObjects(false);
+				//print ("side in");
 				crossedWall = false;
 				//inWall = false;
 				checkCrossBack = false;
@@ -55,10 +55,11 @@ public class SolidWallSide : SolidWall {
 		if (collider.tag == "CorridorBox" && inWall == true
 			&& crossedWall == false && collider.gameObject == currentCorridor) {
 			ShowOnlyOneCorridor (hmd_user.GetComponent<HMD_user>().currentCell.transform);
-			//ShowGrid (grid, true);
+			hmd_user.GetComponent<SolidWallFront>().ShowOutOfBoundsObjects(true);
 
 			crossedWall = true;
 			checkCrossBack = false;
+			//print ("side out");
 		}
 		//exiting wall?
 		if (collider.tag == "Wall") {

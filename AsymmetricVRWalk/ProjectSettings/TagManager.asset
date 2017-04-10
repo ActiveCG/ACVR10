@@ -12,6 +12,9 @@ TagManager:
   - Mimic
   - Grid
   - Panorama
+  - TunnelEntrance
+  - OutOfBounds
+  - OverlapCollider
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - MAP
   - 
   - 
   - 

@@ -7,6 +7,11 @@ public class SolidWallFront : SolidWall {
 	public SolidWallSide leftCollider;
 	public SolidWallSide rightCollider;
 
+	public Material worldSkybox;
+	public Material outOfBoundsSkybox;
+
+	private GameObject[] outOfBoundsObjects;
+
 	void Start () {
 		crossedWall = false;
 		inWall = false;
@@ -15,11 +20,13 @@ public class SolidWallFront : SolidWall {
 		currentCorridor = GameObject.Find ("Cell1/corridor1");
 		leftCollider.currentCorridor = currentCorridor;
 		rightCollider.currentCorridor = currentCorridor;
-		//grid = GameObject.FindGameObjectWithTag ("Grid");
-		//leftCollider.grid = grid;
-		//rightCollider.grid = grid;
 
-		//ShowGrid (grid, false);
+		overlapCollider = GameObject.FindGameObjectWithTag ("OverlapCollider").GetComponent<BoxCollider> ();
+		leftCollider.overlapCollider = overlapCollider;
+		rightCollider.overlapCollider = overlapCollider;
+
+		outOfBoundsObjects = GameObject.FindGameObjectsWithTag ("OutOfBounds");
+		ShowOutOfBoundsObjects (false);
 
 		panoramas = GameObject.FindGameObjectsWithTag ("Panorama");
 		leftCollider.panoramas = panoramas;
@@ -31,8 +38,8 @@ public class SolidWallFront : SolidWall {
 		if (checkCrossBack == true) {
 			if (IsInCorridor (transform.TransformPoint (GetComponent<BoxCollider> ().center)) == true) {
 				ShowCell (GetComponent<HMD_user>().currentCell.transform);
-				//ShowGrid (grid, false);
-
+				ShowOutOfBoundsObjects (false);
+				//print ("front in");
 				crossedWall = false;
 				//inWall = false;
 				checkCrossBack = false;
@@ -73,10 +80,11 @@ public class SolidWallFront : SolidWall {
 		if (collider.tag == "CorridorBox" && inWall == true
 			&& crossedWall == false && collider.gameObject == currentCorridor) {
 			ShowOnlyOneCorridor (GetComponent<HMD_user>().currentCell.transform);
-			//ShowGrid (grid, true);
+			ShowOutOfBoundsObjects (true);
 
 			crossedWall = true;
 			checkCrossBack = false;
+			//print ("front out");
 		}
 		//exiting wall?
 		if (collider.tag == "Wall") {
@@ -84,6 +92,17 @@ public class SolidWallFront : SolidWall {
 			inWall = false;
 			wallsEntered.Remove (collider as BoxCollider);
 			//}
+		}
+	}
+
+	public void ShowOutOfBoundsObjects(bool show){
+		foreach (GameObject o in outOfBoundsObjects) {
+			o.SetActive (show);
+		}
+		if (show == true) {
+			RenderSettings.skybox = outOfBoundsSkybox;
+		} else {
+			RenderSettings.skybox = worldSkybox;
 		}
 	}
 }
@@ -98,6 +117,8 @@ public class SolidWall: MonoBehaviour{
 	//public GameObject grid;
 	public GameObject[] panoramas;
 	protected List<BoxCollider> wallsEntered;
+	//[HideInInspector]
+	public BoxCollider overlapCollider;
 
 	protected bool IsInCorridor(Vector3 colliderCenter){
 		BoxCollider[] corridorColliders = currentCorridor.GetComponents<BoxCollider> ();
@@ -123,7 +144,7 @@ public class SolidWall: MonoBehaviour{
 
 		Collider[] keepColliders = null; //corridor colliders to render
 		//find objects to show
-		for (int c = 0; c < corridorColliders.Length; c++) {
+		/*for (int c = 0; c < corridorColliders.Length; c++) {
 			Collider[] overlappedColls = 
 				Physics.OverlapBox (currentCorridor.transform.TransformPoint(corridorColliders [c].center), 
 					corridorColliders [c].size/2f);
@@ -143,8 +164,15 @@ public class SolidWall: MonoBehaviour{
 				foreach (Collider obj in overlappedColls)
 					keepColliders [i++] = obj;
 			}
-		}
+		}*/
 
+		Collider[] overlappedColls = 
+			Physics.OverlapBox (transform.TransformPoint(overlapCollider.center), overlapCollider.size/2f);
+		keepColliders = new Collider[overlappedColls.Length];
+		int i = 0;
+		foreach (Collider obj in overlappedColls)
+			keepColliders[i++] = obj;
+		
 		//hide cell
 		foreach (Transform child in cell)
 		{
@@ -175,8 +203,4 @@ public class SolidWall: MonoBehaviour{
 			}
 		}
 	}
-
-	/*protected void ShowGrid(GameObject grid, bool show){
-		grid.SetActive (show);
-	}*/
 }

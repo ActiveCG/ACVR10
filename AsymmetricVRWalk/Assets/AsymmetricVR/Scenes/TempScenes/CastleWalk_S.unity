@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: df05f8bb8c06e5e4d9c8e1ae2e5e65fe, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1678835, g: 0.2107358, b: 0.28994045, a: 1}
+  m_IndirectSpecularColor: {r: 0.01902321, g: 0.01033033, b: 0.017098412, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2699,7 +2699,7 @@ MonoBehaviour:
   inWall: 0
   checkCrossBack: 0
   currentCorridor: {fileID: 0}
-  grid: {fileID: 0}
+  panoramas: []
 --- !u!65 &90221143
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9623,7 +9623,7 @@ MonoBehaviour:
   inWall: 0
   checkCrossBack: 0
   currentCorridor: {fileID: 0}
-  grid: {fileID: 0}
+  panoramas: []
 --- !u!65 &322744639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15287,7 +15287,7 @@ MonoBehaviour:
   inWall: 0
   checkCrossBack: 0
   currentCorridor: {fileID: 0}
-  grid: {fileID: 0}
+  panoramas: []
 --- !u!65 &516309152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28207,7 +28207,7 @@ MonoBehaviour:
   inWall: 0
   checkCrossBack: 0
   currentCorridor: {fileID: 0}
-  grid: {fileID: 331842618}
+  panoramas: []
   leftCollider: {fileID: 322744638}
   rightCollider: {fileID: 516309151}
 --- !u!114 &1011539012
@@ -37465,7 +37465,7 @@ MonoBehaviour:
   inWall: 0
   checkCrossBack: 0
   currentCorridor: {fileID: 0}
-  grid: {fileID: 0}
+  panoramas: []
 --- !u!65 &1358167032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58825,7 +58825,7 @@ MonoBehaviour:
   inWall: 0
   checkCrossBack: 0
   currentCorridor: {fileID: 0}
-  grid: {fileID: 331842618}
+  panoramas: []
   leftCollider: {fileID: 90221142}
   rightCollider: {fileID: 1358167031}
 --- !u!114 &2141410489
