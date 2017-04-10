@@ -5,19 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class calibrationTrigger : MonoBehaviour
 {
+
     private float timer;
     private bool startTimer;
 
     public GameObject calibrationCell;
     public GameObject startingCell;
     public GameObject map;
+    public GameObject ui;
 
     public float waitTime;
 
-	void Start(){
-		map.SetActive (false);
-	}
-
+    // Use this for initialization
     void Update()
     {
         if (startTimer == true)
@@ -31,10 +30,15 @@ public class calibrationTrigger : MonoBehaviour
                 SteamVR_Fade.Start(Color.clear, 1);
                 timer = 0;
                 startTimer = false;
+                 //transform.position - GameObject.FindGameObjectWithTag("Player").transform.position;
+                GameObject mimic = GameObject.FindGameObjectWithTag("Mimic");
+                mimic.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position + map.transform.position;
+                ui.SetActive(false);
             }
         }
     }
 
+    // Update is called once per frame
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Player")
