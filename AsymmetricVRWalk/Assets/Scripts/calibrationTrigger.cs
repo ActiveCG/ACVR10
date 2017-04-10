@@ -12,6 +12,7 @@ public class calibrationTrigger : MonoBehaviour
     public GameObject calibrationCell;
     public GameObject startingCell;
     public GameObject map;
+    public GameObject ui;
 
     public float waitTime;
 
@@ -32,6 +33,7 @@ public class calibrationTrigger : MonoBehaviour
                  //transform.position - GameObject.FindGameObjectWithTag("Player").transform.position;
                 GameObject mimic = GameObject.FindGameObjectWithTag("Mimic");
                 mimic.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position + map.transform.position;
+                ui.SetActive(false);
             }
         }
     }
