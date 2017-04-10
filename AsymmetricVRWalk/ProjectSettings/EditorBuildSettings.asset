@@ -6,6 +6,4 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Calibration Room.unity
-  - enabled: 1
-    path: Assets/AsymmetricVR/Scenes/CastleMaze.unity
+    path: Assets/AsymmetricVR/Scenes/TempScenes/CastleACmap_test.unity
