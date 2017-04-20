@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 19e5c9b98b3a43745a13c37c637a2955
+timeCreated: 1492727217
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Opificio
+  fontNames:
+  - Opificio
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
