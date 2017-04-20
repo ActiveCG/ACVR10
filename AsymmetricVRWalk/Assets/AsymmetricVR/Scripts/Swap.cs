@@ -20,6 +20,7 @@ public class Swap : MonoBehaviour {
 	void OnDrawGizmos() {
 		Gizmos.color = new Color(1f,1f,0f,0.5f);
 		if (transform.rotation.eulerAngles.y < 45f) {
+			// position of the drawCube (trigger_position, boxcollider_sizeX, y boxcollider_sizeZ)
 			Gizmos.DrawCube (transform.position, 
 				new Vector3 (GetComponent<BoxCollider> ().size.x, 0.1f, GetComponent<BoxCollider> ().size.z));
 		}

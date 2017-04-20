@@ -32,7 +32,10 @@ public class MimicFollower : MonoBehaviour {
 			transform.position = new Vector3 (transform.position.x, y, transform.position.z);
 		}
 
-		transform.rotation = hmd.rotation;
+		Vector3 lookDir = hmd.forward;
+		lookDir.y = 0; // keep only the horizontal direction
+		transform.rotation = Quaternion.LookRotation(lookDir);
+		//transform.rotation = hmd.rotation;
 	}
 
 	private void SpeedUp(){
