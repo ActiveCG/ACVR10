@@ -23,7 +23,7 @@ Platform assembly: C:\Users\Nicolaj Evers\Documents\Unity\Maze\ACVR10\Asymmetric
 Loading C:\Users\Nicolaj Evers\Documents\Unity\Maze\ACVR10\AsymmetricVRWalk\Maze_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
 Platform assembly: C:\Users\Nicolaj Evers\Documents\Unity\Maze\ACVR10\AsymmetricVRWalk\Maze_Data\Managed\UnityEngine.VR.dll (this message is harmless)
 Loading C:\Users\Nicolaj Evers\Documents\Unity\Maze\ACVR10\AsymmetricVRWalk\Maze_Data\Managed\UnityEngine.VR.dll into Unity Child Domain
-- Completed reload, in  0.107 seconds
+- Completed reload, in  0.060 seconds
 Platform assembly: C:\Users\Nicolaj Evers\Documents\Unity\Maze\ACVR10\AsymmetricVRWalk\Maze_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Nicolaj Evers\Documents\Unity\Maze\ACVR10\AsymmetricVRWalk\Maze_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
@@ -38,6 +38,28 @@ VR: OpenVR Error! OpenVR failed initialization with error code VRInitError_Init_
  
 (Filename:  Line: 954)
 
-UnloadTime: 2.650282 ms
+UnloadTime: 2.368828 ms
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 240c -> priority: 1 
+  Thread -> id: 3070 -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 14.185170 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 10756.
+Total: 3.104971 ms (FindLiveObjects: 1.243014 ms CreateObjectMapping: 0.201893 ms MarkObjects: 1.614294 ms  DeleteObjects: 0.044485 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+NullReferenceException: Object reference not set to an instance of an object
+  at MimicFollower.OnDisable () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+UnloadTime: 26.871109 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 10756.
+Total: 3.731611 ms (FindLiveObjects: 1.249858 ms CreateObjectMapping: 0.171524 ms MarkObjects: 2.249061 ms  DeleteObjects: 0.059028 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MimicFollower.OnDisable () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
