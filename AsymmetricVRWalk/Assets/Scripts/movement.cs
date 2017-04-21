@@ -6,21 +6,21 @@ public class movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if(Input.GetKeyDown("w"))
+		if(Input.GetKey("w"))
         {
-            transform.position -= new Vector3(0.1f, 0, 0);
+            transform.position -= new Vector3(0.05f, 0, 0);
         }
-        if (Input.GetKeyDown("s"))
+        if (Input.GetKey("s"))
         {
-            transform.position += new Vector3(0.1f, 0, 0);
+            transform.position += new Vector3(0.05f, 0, 0);
         }
-        if (Input.GetKeyDown("d"))
+        if (Input.GetKey("d"))
         {
-            transform.position += new Vector3(0, 0, 0.1f);
+            transform.position += new Vector3(0, 0, 0.05f);
         }
-        if (Input.GetKeyDown("a"))
+        if (Input.GetKey("a"))
         {
-            transform.position -= new Vector3(0, 0, 0.1f);
+            transform.position -= new Vector3(0, 0, 0.05f);
         }
     }
 }

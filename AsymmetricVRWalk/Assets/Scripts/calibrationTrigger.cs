@@ -30,11 +30,9 @@ public class calibrationTrigger : MonoBehaviour
                 startingCell.SetActive(true);
                 map.SetActive(true);
                 SteamVR_Fade.Start(Color.clear, 1);
-                //TestManager.instance.OpenIOStream();
                 TestManager.instance.startTimer = true;
                 timer = 0;
                 startTimer = false;
-                 //transform.position - GameObject.FindGameObjectWithTag("Player").transform.position;
                 GameObject mimic = GameObject.FindGameObjectWithTag("Mimic");
                 mimic.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position + map.transform.position;
                 ui.SetActive(false);
