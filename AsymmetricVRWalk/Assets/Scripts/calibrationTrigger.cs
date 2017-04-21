@@ -13,6 +13,7 @@ public class calibrationTrigger : MonoBehaviour
     public GameObject startingCell;
     public GameObject map;
     public GameObject ui;
+    public GameObject mapCell0;
 
     public float waitTime;
 
@@ -25,9 +26,12 @@ public class calibrationTrigger : MonoBehaviour
             if (timer > waitTime)
             {
                 calibrationCell.SetActive(false);
+                mapCell0.SetActive(false);
                 startingCell.SetActive(true);
                 map.SetActive(true);
                 SteamVR_Fade.Start(Color.clear, 1);
+                //TestManager.instance.OpenIOStream();
+                TestManager.instance.startTimer = true;
                 timer = 0;
                 startTimer = false;
                  //transform.position - GameObject.FindGameObjectWithTag("Player").transform.position;
