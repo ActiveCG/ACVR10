@@ -6,19 +6,39 @@ using UnityEngine;
 
 public class XUIManager : MonoBehaviour {
 
-    string fileName = "MyFile.txt";
+    public GameObject HMD;
+    public GameObject NonHMD;
 
-    public void OnButtonPress()
+    public void HMDButtonPress(int rank)
     {
-        if (File.Exists(fileName))
+        TestManager.instance.HMD = rank.ToString();
+        TestManager.instance.safe1 = true;
+        HMD.SetActive(false);
+    }
+    public void NavButtonPress(int rank)
+    {
+        TestManager.instance.nonHMD = rank.ToString();
+        TestManager.instance.safe2 = true;
+        NonHMD.SetActive(false);
+    }
+    
+    void Update()
+    {
+        if((HMD.activeInHierarchy == true || NonHMD.activeInHierarchy == true) && Input.GetKeyDown("space"))
         {
-            Debug.Log(fileName + " already exists.");
-            return;
+            if (TestManager.instance.HMD == null)
+            {
+                TestManager.instance.HMD = "Null";
+            }
+            if(TestManager.instance.nonHMD == null)
+            {
+                TestManager.instance.nonHMD = "Null";
+            }
+            
+            TestManager.instance.safe1 = true;
+            TestManager.instance.safe2 = true;
+            HMD.SetActive(false);
+            NonHMD.SetActive(false);            
         }
-        var sr = File.CreateText(fileName);
-        sr.WriteLine("This is my file.");
-        sr.WriteLine("I can write ints {0} or floats {1}, and so on.",
-            1, 4.2);
-        sr.Close();
     }
 }

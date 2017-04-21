@@ -29,7 +29,7 @@ public class youWin : MonoBehaviour {
 		if(startTimer == true)
         {
             timer += Time.deltaTime;
-            if(timer > 30)
+            if (timer > 30 && TestManager.instance.winning == true)
             {
                 hmdYouWin.SetActive(false);
                 mapYouWin.SetActive(false);
@@ -57,6 +57,7 @@ public class youWin : MonoBehaviour {
             hmdYouWin.SetActive(true);
             mapYouWin.SetActive(true);
 
+            TestManager.instance.writeTimer = true;
             startTimer = true;
         }
     }
