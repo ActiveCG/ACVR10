@@ -9,11 +9,11 @@ public class youWin : MonoBehaviour {
     public GameObject mapYouWin;
     public GameObject hmdYouWin;
     public GameObject mapKalibrer;
+    public GameObject likertUI;
 
     bool fade;
     bool startTimer;
 
-    float timer2;
     float timer;
 
     void Start()
@@ -31,21 +31,8 @@ public class youWin : MonoBehaviour {
             timer += Time.deltaTime;
             if (timer > 30 && TestManager.instance.winning == true)
             {
-                hmdYouWin.SetActive(false);
-                mapYouWin.SetActive(false);
+                TestManager.instance.EndGame(mapYouWin, hmdYouWin);
                 timer = 0;
-                startTimer = false;
-                fade = true;
-            }
-        }
-        if(fade == true)
-        {
-            SteamVR_Fade.Start(Color.black, 5);
-            timer2 += Time.deltaTime;
-            if (timer2 > 5)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                fade = false;
             }
         }
 	}
@@ -54,6 +41,7 @@ public class youWin : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
+            likertUI.SetActive(true);
             hmdYouWin.SetActive(true);
             mapYouWin.SetActive(true);
 

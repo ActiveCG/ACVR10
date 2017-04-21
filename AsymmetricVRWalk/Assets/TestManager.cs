@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestManager : MonoBehaviour
 {
     public static TestManager instance = null;
 
     StreamWriter file;
+
+    public GameObject likertUI;
 
     [HideInInspector]
     public string HMD;
@@ -35,6 +38,14 @@ public class TestManager : MonoBehaviour
     [HideInInspector]
     public bool winning;
 
+    [HideInInspector]
+    public bool fade;
+
+    private string Crash; 
+
+    private float timer2;
+
+
     public string fileDest;
 
     void Awake()
@@ -61,20 +72,13 @@ public class TestManager : MonoBehaviour
     {
         if (Input.GetKeyDown("t"))
         {
-            manualWriteTimer = true;
+            writeTimer = true;
+            likertUI.SetActive(true);
+            Crash = " The system broke";
         }
         if (startTimer == true)
         {
             globalTimer += Time.deltaTime;
-        }
-        if (manualWriteTimer == true)
-        {
-            file.WriteLine("Manual Time:" + globalTimer);
-            file.Close();
-
-            manualWriteTimer = false;
-            startTimer = false;
-            globalTimer = 0;
         }
         if(writeTimer == true)
         {
@@ -86,13 +90,32 @@ public class TestManager : MonoBehaviour
         }
         if(safe1 == true && safe2 == true)
         {
-            file.WriteLine("Time: " + time + "," + " HMD: " + HMD + "," + " nonHMD: " + nonHMD);
+            file.WriteLine("Time: " + time + "," + " HMD: " + HMD + "," + " nonHMD: " + nonHMD + "," + Crash);
             file.Close();
 
             safe1 = false;
             safe2 = false;
 
             winning = true;
+            fade = true;
         }
+        if (fade == true)
+        {
+            SteamVR_Fade.Start(Color.black, 5);
+            timer2 += Time.deltaTime;
+            if (timer2 > 5)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                fade = false;
+            }
+        }
+    }
+    public void EndGame(GameObject HMD, GameObject Map)
+    {
+        likertUI.SetActive(false);
+        HMD.SetActive(false);
+        Map.SetActive(false);
+        startTimer = false;
+        fade = true;
     }
 }
