@@ -9,4 +9,13 @@ public class HMD_user : MonoBehaviour {
 	void Start(){
 		//currentCell = GameObject.Find ("Cell1");
 	}
+
+	public delegate void TrespassAction(bool state);
+	public event TrespassAction OnTrespassed;
+
+	public void trespassed(bool state){
+		if (OnTrespassed != null) {
+			OnTrespassed (state);
+		}
+	}
 }

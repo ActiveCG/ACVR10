@@ -16,26 +16,40 @@ public class MimicFollower : MonoBehaviour {
 	private Vector3 prolongOffset;
 	private bool inTunnelEntrance;//yo allow entrance in a tunnel
 
+	private bool trespassed;
+	public GameObject trespass_text;
+
+	void OnEnable(){
+		GameObject.FindObjectOfType<HMD_user> ().OnTrespassed += Trespassing;
+	}
+	void OnDisable(){
+		GameObject.FindObjectOfType<HMD_user> ().OnTrespassed -= Trespassing;
+	}
+
 	void Start () {
 		hmd = GameObject.FindGameObjectWithTag ("Player").transform;
 		currentProlong = null;
 		prolongOffset = Vector3.zero;
 		inTunnelEntrance = false;
+		trespassed = false;
+		trespass_text.SetActive (false);
 	}
 
 	void Update () {
-		if (currentProlong != null) {
-			SpeedUp ();
-		} else {
-			transform.position = refPoint.position + hmd.position + prolongOffset;
-			float y = Mathf.Clamp (hmd.transform.position.y, 0.5f, 2.6f);
-			transform.position = new Vector3 (transform.position.x, y, transform.position.z);
-		}
+		if(trespassed == false){
+			if (currentProlong != null) {
+				SpeedUp ();
+			} else {
+				transform.position = refPoint.position + hmd.position + prolongOffset;
+				float y = Mathf.Clamp (hmd.transform.position.y, 0.5f, 2.6f);
+				transform.position = new Vector3 (transform.position.x, y, transform.position.z);
+			}
 
-		Vector3 lookDir = hmd.forward;
-		lookDir.y = 0; // keep only the horizontal direction
-		transform.rotation = Quaternion.LookRotation(lookDir);
-		//transform.rotation = hmd.rotation;
+			Vector3 lookDir = hmd.forward;
+			lookDir.y = 0; // keep only the horizontal direction
+			transform.rotation = Quaternion.LookRotation(lookDir);
+			//transform.rotation = hmd.rotation;
+		}
 	}
 
 	private void SpeedUp(){
@@ -145,6 +159,15 @@ public class MimicFollower : MonoBehaviour {
 				}
 			}
 			currentProlong = null;
+		}
+	}
+
+	public void Trespassing(bool state){
+		trespassed = state;
+		if (trespassed == true) {
+			trespass_text.SetActive (true);
+		} else {
+			trespass_text.SetActive (false);
 		}
 	}
 }

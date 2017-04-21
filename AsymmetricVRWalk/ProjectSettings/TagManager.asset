@@ -15,6 +15,7 @@ TagManager:
   - TunnelEntrance
   - OutOfBounds
   - OverlapCollider
+  - ReturnTrigger
   layers:
   - Default
   - TransparentFX
