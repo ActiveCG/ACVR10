@@ -99,7 +99,7 @@ Material:
       second: 0
     - first:
         name: _OcclusionStrength
-      second: 0.6
+      second: 0.25
     - first:
         name: _Parallax
       second: 0.02

@@ -6,13 +6,28 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Cube.013
+    100004: Plane.003
+    100006: single_window_new.002
     400000: //RootNode
+    400002: Cube.013
+    400004: Plane.003
+    400006: single_window_new.002
     2300000: //RootNode
+    2300002: Cube.013
+    2300004: Plane.003
+    2300006: single_window_new.002
     3300000: //RootNode
+    3300002: Cube.013
+    3300004: Plane.003
+    3300006: single_window_new.002
     4300000: wall_sides_1
     4300002: wall_sides_win_1
     4300004: deco_full_3.000
     4300006: single_window_new
+    4300008: Cube.013
+    4300010: Plane.003
+    4300012: single_window_new.002
   materials:
     importMaterials: 1
     materialName: 0
