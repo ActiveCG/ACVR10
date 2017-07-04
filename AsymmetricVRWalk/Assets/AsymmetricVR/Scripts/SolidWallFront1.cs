@@ -200,6 +200,8 @@ public class SolidWall_1: MonoBehaviour{
 		////
 
 		//show one wall and one floor
+		overlapCollider.transform.position = transform.position;
+
 		Collider[] overlappedColls = 
 			Physics.OverlapBox (transform.TransformPoint(overlapCollider.center), overlapCollider.size/2f);
 		keepColliders = new Collider[overlappedColls.Length];
