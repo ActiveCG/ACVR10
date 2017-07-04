@@ -11,7 +11,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Rovango studio
-  productName: Sommad
+  productName: "S\xF6mmad"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
@@ -40,7 +40,7 @@ PlayerSettings:
   m_SplashScreenLogos: []
   m_SplashScreenBackgroundLandscape: {fileID: 0}
   m_SplashScreenBackgroundPortrait: {fileID: 0}
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 6b20f31b608a8be4c854354af4ac4bd0,
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: bccbea5cc17d05b4bac36ade84f6ee8e,
     type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -208,7 +208,7 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  resolutionDialogBanner: {fileID: 2800000, guid: 6b20f31b608a8be4c854354af4ac4bd0,
+  resolutionDialogBanner: {fileID: 2800000, guid: bccbea5cc17d05b4bac36ade84f6ee8e,
     type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 

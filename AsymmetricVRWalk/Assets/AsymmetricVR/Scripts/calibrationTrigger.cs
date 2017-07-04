@@ -36,6 +36,7 @@ public class calibrationTrigger : MonoBehaviour
                 GameObject mimic = GameObject.FindGameObjectWithTag("Mimic");
                 mimic.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position + map.transform.position;
                 ui.SetActive(false);
+				GameObject.FindObjectOfType<HMD_user> ().huntingChanged (true);
             }
         }
     }

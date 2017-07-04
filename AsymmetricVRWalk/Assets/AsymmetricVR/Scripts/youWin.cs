@@ -61,6 +61,7 @@ public class youWin : MonoBehaviour {
             mapYouWin.SetActive(true);
 
             startTimer = true;
+			GameObject.FindObjectOfType<HMD_user> ().huntingChanged (false);
         }
     }
 }

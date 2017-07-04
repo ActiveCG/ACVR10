@@ -16,6 +16,7 @@ TagManager:
   - OutOfBounds
   - OverlapCollider
   - ReturnTrigger
+  - timerText
   layers:
   - Default
   - TransparentFX
