@@ -30,7 +30,7 @@ public class youWin : MonoBehaviour {
 		if(startTimer == true)
         {
             timer += Time.deltaTime;
-            if (timer > 20)
+            if (timer > 18)
             {
                 //hmdYouWin.SetActive(false);
                 //mapYouWin.SetActive(false);
